@@ -162,8 +162,14 @@
             font-family: var(--font-sans);
             font-size: var(--fs-body);
             overflow-x: hidden;
-            max-width: 100vw;
+            max-width: 100%;
             background-color: var(--perla);
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Fluidez táctil en iOS y Android (elimina delay de 300ms y conflictos de doble tap) */
+        a, button, summary, input, select, textarea {
+            touch-action: manipulation;
         }
 
         
@@ -232,23 +238,27 @@
             box-shadow: 0 4px 20px -5px rgb(var(--negro-rgb)/0.05);
         }
 
-        /* Items de navegación con subrayado malva animado */
+        /* Items de navegación con subrayado malva animado (Compositor-only: transform scaleX) */
         .nav-item {
             position: relative;
             opacity: 0.8;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
             transition: opacity var(--dur-base) var(--ease-in-out);
         }
         .nav-item:hover { opacity: 1; }
         .nav-item::after {
             content: '';
             position: absolute;
-            left: 50%;
-            bottom: -8px;
+            left: 0;
+            right: 0;
+            bottom: 4px;
             height: 2px;
-            width: 0;
             background: var(--malva-400);
-            transition: all var(--dur-base) var(--var(--ease-out));
-            transform: translateX(-50%);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform var(--dur-base) var(--ease-out-luxe);
             border-radius: 9999px;
         }
         #navbar.on-hero .nav-item::after {
@@ -259,15 +269,10 @@
             font-weight: 600;
         }
         .nav-item.active::after {
-            width: 100%;
+            transform: scaleX(1);
         }
 
-        /* Botones de Lujo Silencioso */
-        .btn-mauve {
-            background: linear-gradient(135deg, var(--malva-400) 0%, var(--malva-500) 100%);
-            color: var(--blanco);
-            transition: all var(--dur-base) var(--ease-in-out);
-        }
+        /* Botones de Lujo Silencioso (Física Spring & Compositor-only) */
         .btn-mauve {
             background: linear-gradient(135deg, var(--malva-400) 0%, var(--malva-500) 100%);
             color: var(--blanco);
@@ -283,7 +288,8 @@
         .btn-ivory {
             background: var(--marfil);
             color: var(--malva-900);
-            transition: all var(--dur-base) var(--ease-in-out);
+            transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base) var(--ease-out-luxe), background-color var(--dur-base) var(--ease-out-luxe);
+            will-change: transform;
         }
         .btn-ivory:hover {
             background: var(--cuarzo);
@@ -292,12 +298,6 @@
         }
 
         /* Tarjetas de tratamientos clínicos de lujo */
-        .card-luxe {
-            background: var(--blanco);
-            border: 1px solid var(--plomo-200);
-            border-radius: 1.25rem;
-            transition: all var(--dur-slow) var(--var(--ease-out));
-        }
         .card-luxe {
             background: var(--blanco);
             border: 1px solid var(--plomo-200);
@@ -385,12 +385,15 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Estilo interactivo para Divulgación Progresiva (Progressive Disclosure) */
+        /* Estilo interactivo para Divulgación Progresiva (Progressive Disclosure - área táctil >= 44px) */
         details.disclosure-luxe > summary {
             list-style: none;
             cursor: pointer;
             user-select: none;
             outline: none;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
         details.disclosure-luxe > summary::-webkit-details-marker {
             display: none;
@@ -433,7 +436,7 @@
 
             <!-- LOGO OFICIAL DE BYAMOND (LOGO PRINCIPAL COMPLETO BIEN PROPORCIONADO) -->
             <a href="#inicio" class="flex items-center gap-2 shrink-0 group py-1">
-                <img id="navLogo" src="LOGO/Logo-byamond-clean.png" alt="Logo Oficial BYAMOND" class="h-10 md:h-12 w-auto max-h-12 object-contain drop-shadow-[0_2px_14px_rgb(var(--blanco-rgb)/0.55)] group-hover:scale-105 transition-transform duration-300">
+                <img id="navLogo" src="LOGO/logo-byamond-clean.png" alt="Logo Oficial BYAMOND" class="h-10 md:h-12 w-auto max-h-12 object-contain drop-shadow-[0_2px_14px_rgb(var(--blanco-rgb)/0.55)] group-hover:scale-105 transition-transform duration-300">
             </a>
 
             <!-- NAVEGACIÓN ENTRE VISTAS -->
@@ -448,10 +451,10 @@
 
             <!-- CTA HEADER -->
             <div class="flex items-center gap-3">
-                <a href="#contacto" id="navCta" class="hidden sm:inline-flex btn-ivory rounded-full px-6 py-2.5 text-[11px] font-semibold tracking-[0.18em] uppercase items-center">
+                <a href="#contacto" id="navCta" class="hidden sm:inline-flex btn-ivory rounded-full px-6 py-2.5 min-h-[44px] text-[11px] font-semibold tracking-[0.18em] uppercase items-center">
                     Reservar Cita
                 </a>
-                <button type="button" id="menuBtn" aria-label="Abrir menú" class="lg:hidden w-10 h-10 rounded-full border border-current/30 flex items-center justify-center">
+                <button type="button" id="menuBtn" aria-label="Abrir menú" class="lg:hidden w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-current/30 flex items-center justify-center">
                     <i id="menuIcon" class="fa-solid fa-bars text-sm"></i>
                 </button>
             </div>
@@ -516,7 +519,7 @@
                     
                     <!-- LOGO PRINCIPAL OFICIAL CENTRADO, IMPONENTE Y PROTAGÓNICO -->
                     <div class="flex flex-col items-center justify-center w-full">
-                        <img src="LOGO/Logo-byamond-clean.png" alt="BYAMOND Salud Dental y Estética Orofacial" class="w-72 sm:w-96 md:w-[500px] max-w-full mx-auto h-auto object-contain drop-shadow-[0_8px_32px_rgb(var(--blanco-rgb)/0.65)] hover:scale-[1.02] transition-transform duration-500">
+                        <img src="LOGO/logo-byamond-clean.png" alt="BYAMOND Salud Dental y Estética Orofacial" class="w-72 sm:w-96 md:w-[500px] max-w-full mx-auto h-auto object-contain drop-shadow-[0_8px_32px_rgb(var(--blanco-rgb)/0.65)] hover:scale-[1.02] transition-transform duration-500">
                         <!-- Subtítulo oficial con alto contraste y relieve -->
                         <span class="fs-eyebrow font-semibold tracking-[0.25em] sm:tracking-[0.35em] uppercase text-white drop-shadow-[0_2px_10px_rgb(var(--negro-rgb)/0.5)] mt-2.5 block">
                             Salud Dental y Estética Orofacial
@@ -836,7 +839,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 45 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, quiero información sobre Rinomodelación" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, quiero información sobre Rinomodelación" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Consultar
                                         </a>
                                     </div>
@@ -868,7 +871,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 40 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, quiero información sobre Escultura Labial" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, quiero información sobre Escultura Labial" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Consultar
                                         </a>
                                     </div>
@@ -900,7 +903,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 35 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Aumento de Mentón" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Aumento de Mentón" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Agendar
                                         </a>
                                     </div>
@@ -932,7 +935,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 45 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Perfilado Mandibular" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Perfilado Mandibular" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Agendar
                                         </a>
                                     </div>
@@ -966,7 +969,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-xs text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1.5"></i> 30 min · Control a los 15 días</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar sesión de Toxina Botulínica para Arrugas" class="btn-mauve rounded-full px-6 py-2.5 min-h-[42px] text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar sesión de Toxina Botulínica para Arrugas" class="btn-mauve rounded-full px-6 py-2.5 min-h-[44px] text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-sm"></i> Reservar Sesión
                                         </a>
                                     </div>
@@ -991,7 +994,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-xs text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1.5"></i> 30 min · Alivio muscular total</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar tratamiento de Bruxismo con Toxina Botulínica" class="btn-mauve rounded-full px-6 py-2.5 min-h-[42px] text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar tratamiento de Bruxismo con Toxina Botulínica" class="btn-mauve rounded-full px-6 py-2.5 min-h-[44px] text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-2 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-sm"></i> Reservar Sesión
                                         </a>
                                     </div>
@@ -1035,7 +1038,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 35 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar sesión de Skinbooster" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar sesión de Skinbooster" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Reservar
                                         </a>
                                     </div>
@@ -1067,7 +1070,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 40 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo consultar por ADN de Salmón" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo consultar por ADN de Salmón" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Consultar
                                         </a>
                                     </div>
@@ -1099,7 +1102,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 35 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, quiero información sobre Tratamiento de Ojeras" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, quiero información sobre Tratamiento de Ojeras" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Consultar
                                         </a>
                                     </div>
@@ -1131,7 +1134,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 45 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar sesión de Hydrafacial" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo reservar sesión de Hydrafacial" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Reservar
                                         </a>
                                     </div>
@@ -1175,7 +1178,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 45 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Bioestimuladores" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Bioestimuladores" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Agendar
                                         </a>
                                     </div>
@@ -1207,7 +1210,7 @@
                                     </div>
                                     <div class="mt-6 pt-4 border-t border-plomo-100 flex items-center justify-between">
                                         <span class="text-[10px] text-plomo-500 font-light"><i class="fa-regular fa-clock text-mauve mr-1"></i> 50 min</span>
-                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Hilos PDO" class="btn-mauve rounded-full px-4 py-2 min-h-[38px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+                                        <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar evaluación para Hilos PDO" class="btn-mauve rounded-full px-5 py-2.5 min-h-[44px] text-[10px] font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
                                             <i class="fa-brands fa-whatsapp text-xs"></i> Agendar
                                         </a>
                                     </div>
@@ -1756,7 +1759,7 @@
                         <h4 class="font-serif text-2xl text-carbon">Formulario de Consulta Médica</h4>
                         <div>
                             <label class="block text-[10px] uppercase tracking-[0.25em] text-plomo-500 mb-3">1. Selecciona Tratamiento de Interés</label>
-                            <select id="rServicio" class="field-input w-full rounded-full px-5 py-3 text-sm">
+                            <select id="rServicio" class="field-input w-full rounded-full px-5 py-3 min-h-[48px] text-sm">
                                 <optgroup label="Odontología Integral y Estética">
                                     <option value="Rehabilitación Oral">Rehabilitación Oral</option>
                                     <option value="Implantes Dentales">Implantes Dentales</option>
@@ -1780,11 +1783,11 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label for="rNombre" class="block text-[10px] uppercase tracking-[0.25em] text-plomo-500 mb-2">2. Tu Nombre Completo</label>
-                                <input id="rNombre" type="text" required placeholder="Ej. Mariana López" class="field-input w-full rounded-full px-5 py-3 text-sm">
+                                <input id="rNombre" type="text" required placeholder="Ej. Mariana López" class="field-input w-full rounded-full px-5 py-3 min-h-[48px] text-sm">
                             </div>
                             <div>
                                 <label for="rHorario" class="block text-[10px] uppercase tracking-[0.25em] text-plomo-500 mb-2">3. Horario Preferido</label>
-                                <select id="rHorario" class="field-input w-full rounded-full px-5 py-3 text-sm">
+                                <select id="rHorario" class="field-input w-full rounded-full px-5 py-3 min-h-[48px] text-sm">
                                     <option>Mañana (9:00 – 13:00)</option>
                                     <option>Tarde (13:00 – 17:00)</option>
                                     <option>Noche (17:00 – 20:00)</option>
@@ -1805,9 +1808,9 @@
                             <div class="flex gap-3"><i class="fa-brands fa-whatsapp text-mauve mt-1"></i><span>Central de citas: <!-- [[CONFIRMAR: número de WhatsApp con código de país]] --></span></div>
                             <!-- [[CONFIRMAR: enlaces reales de Instagram, TikTok y Google Business]] -->
                             <div class="flex gap-3 pt-2">
-                                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full border border-plomo-200 flex items-center justify-center text-mauve hover:bg-mauve hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="https://www.google.com/maps" target="_blank" rel="noopener" aria-label="Google Business" class="w-10 h-10 rounded-full border border-plomo-200 flex items-center justify-center text-mauve hover:bg-mauve hover:text-white transition-all"><i class="fa-brands fa-google"></i></a>
-                                <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-full border border-plomo-200 flex items-center justify-center text-mauve hover:bg-mauve hover:text-white transition-all"><i class="fa-brands fa-tiktok"></i></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-plomo-200 flex items-center justify-center text-mauve hover:bg-mauve hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://www.google.com/maps" target="_blank" rel="noopener" aria-label="Google Business" class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-plomo-200 flex items-center justify-center text-mauve hover:bg-mauve hover:text-white transition-all"><i class="fa-brands fa-google"></i></a>
+                                <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-plomo-200 flex items-center justify-center text-mauve hover:bg-mauve hover:text-white transition-all"><i class="fa-brands fa-tiktok"></i></a>
                             </div>
                         </div>
                         <div class="rounded-2xl border border-dashed border-plomo-300 flex-1 min-h-[260px] flex flex-col items-center justify-center gap-2 p-6 text-center bg-plomo-50">
@@ -1837,13 +1840,13 @@
                 </div>
             </div>
 
-            <nav class="flex flex-wrap justify-center gap-6 text-[10px] uppercase tracking-[0.2em] text-ivory/80">
-                <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
-                <a href="#servicios" class="hover:text-white transition-colors">Servicios</a>
-                <a href="#maquinas" class="hover:text-white transition-colors">Máquinas</a>
-                <a href="#pacientes" class="hover:text-white transition-colors">Pacientes</a>
-                <a href="#experiencia" class="hover:text-white transition-colors">Experiencia</a>
-                <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
+            <nav class="flex flex-wrap justify-center gap-4 sm:gap-6 text-[10px] uppercase tracking-[0.2em] text-ivory/80">
+                <a href="#inicio" class="min-h-[44px] inline-flex items-center px-2 hover:text-white transition-colors">Inicio</a>
+                <a href="#servicios" class="min-h-[44px] inline-flex items-center px-2 hover:text-white transition-colors">Servicios</a>
+                <a href="#maquinas" class="min-h-[44px] inline-flex items-center px-2 hover:text-white transition-colors">Máquinas</a>
+                <a href="#pacientes" class="min-h-[44px] inline-flex items-center px-2 hover:text-white transition-colors">Pacientes</a>
+                <a href="#experiencia" class="min-h-[44px] inline-flex items-center px-2 hover:text-white transition-colors">Experiencia</a>
+                <a href="#contacto" class="min-h-[44px] inline-flex items-center px-2 hover:text-white transition-colors">Contacto</a>
             </nav>
 
             <p class="text-[10px] text-ivory/60 font-light">
@@ -1919,13 +1922,13 @@
 
             const navLogo = document.getElementById('navLogo');
             if (navLogo) {
-                navLogo.src = onHero ? 'LOGO/Logo-byamond-clean.png' : 'LOGO/logo-byamond-dark.png';
+                navLogo.src = onHero ? 'LOGO/logo-byamond-clean.png' : 'LOGO/logo-byamond-dark.png';
                 navLogo.className = onHero
                     ? 'h-10 md:h-12 w-auto max-h-12 object-contain drop-shadow-[0_2px_14px_rgb(var(--blanco-rgb)/0.55)] group-hover:scale-105 transition-transform duration-300'
                     : 'h-10 md:h-12 w-auto max-h-12 object-contain drop-shadow-[0_1px_4px_rgb(var(--negro-rgb)/0.1)] group-hover:scale-105 transition-transform duration-300';
             }
             if (navCta) {
-                navCta.className = (onHero ? 'btn-ivory' : 'btn-mauve') + ' hidden sm:inline-flex rounded-full px-6 py-2.5 text-[11px] font-semibold tracking-[0.18em] uppercase transition-all duration-300';
+                navCta.className = (onHero ? 'btn-ivory' : 'btn-mauve') + ' hidden sm:inline-flex items-center rounded-full px-6 py-2.5 min-h-[44px] text-[11px] font-semibold tracking-[0.18em] uppercase transition-all duration-300';
             }
         }
         window.addEventListener('scroll', updateNavbarAppearance, { passive: true });
