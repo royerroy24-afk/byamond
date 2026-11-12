@@ -46,6 +46,8 @@
                             DEFAULT: tok('malva-400'), // Malva empolvado oficial de BYAMOND
                             dark: tok('malva-500'),
                             700: tok('malva-700'),
+                            900: tok('malva-900'),
+                            950: tok('malva-950'),
                             deep: tok('malva-900'),
                             night: tok('malva-950')
                         },
@@ -504,10 +506,10 @@
         <div data-view="inicio">
             <!-- PORTADA HERO COMPACTA Y COHESIVA (FONDO MALVA EMPOLVADO #9E7B82 DE LA MARCA) -->
             <section class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-mauve via-mauve-dark to-mauve-700 pt-20 pb-10 px-4 sm:px-6">
-                <!-- Fotografía Femenina de Alta Estética en Baja Opacidad y Luminosidad -->
+                <!-- Fotografía de Sesión Morpheus 8 de Alta Estética con Overlay Equilibrado -->
                 <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                    <img src="assets/img/hero-bg.webp" alt="Estética Femenina Byamond" class="w-full h-full object-cover opacity-25 mix-blend-luminosity">
-                    <div class="absolute inset-0 bg-gradient-to-b from-mauve/40 via-transparent to-mauve-700/85"></div>
+                    <img src="assets/img/hero-bg.webp" alt="Sesión Estética Morpheus 8 Byamond" class="w-full h-full object-cover opacity-35 mix-blend-luminosity">
+                    <div class="absolute inset-0 bg-gradient-to-b from-mauve-deep/60 via-mauve-700/50 to-mauve-night/85"></div>
                     <!-- Destellos prismáticos sutiles inspirados en el monograma del logo -->
                     <div class="absolute -left-10 top-10 w-32 h-[450px] rotate-[18deg] bg-gradient-to-b from-white/20 via-quartz/10 to-transparent blur-[1px]"></div>
                     <div class="absolute -right-10 bottom-0 w-32 h-[400px] rotate-[18deg] bg-gradient-to-t from-white/20 via-quartz/10 to-transparent blur-[1px]"></div>
@@ -617,18 +619,18 @@
                             </span>
                         </a>
 
-                        <!-- BENTO 5: CONTACTO (COL-SPAN-12) BARRA INTEGRADA -->
-                        <a href="#contacto" class="group relative col-span-12 rounded-3xl overflow-hidden bg-gradient-to-r from-mauve-900 via-mauve-700 to-mauve p-6 sm:p-8 text-white shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <!-- BENTO 5: CONTACTO (COL-SPAN-12) BARRA INTEGRADA CON LETRAS EN NEGRO MATE (#1A1A1A) Y GRIS CARBÓN (#3A3A3A) -->
+                        <a href="#contacto" class="group relative col-span-12 rounded-3xl overflow-hidden bg-gradient-to-r from-white via-perla to-mauve-50 border border-plomo-200 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-mauve/50 transition-all">
                             <div class="flex items-center gap-4">
-                                <img src="LOGO/BYAMOND (1).png" alt="Monograma BYAMOND" class="w-10 h-10 object-contain opacity-95">
+                                <img src="LOGO/logo-byamond-dark.png" alt="Monograma BYAMOND" class="w-11 h-11 object-contain opacity-95">
                                 <div>
-                                    <span class="text-[10px] tracking-[0.25em] uppercase text-quartz font-semibold">Atención Personalizada</span>
-                                    <h3 class="font-serif text-xl sm:text-2xl text-white">Reserva tu Evaluación Presencial</h3>
-                                    <p class="text-xs text-white/80 font-light mt-0.5">Coordinación confidencial y directa vía WhatsApp</p>
+                                    <span class="text-[10px] tracking-[0.25em] uppercase text-mauve-dark font-semibold">Atención Personalizada</span>
+                                    <h3 class="font-serif text-xl sm:text-2xl text-[#1A1A1A] font-medium mt-0.5">Reserva tu Evaluación Presencial</h3>
+                                    <p class="text-xs sm:text-sm text-[#3A3A3A] font-normal mt-0.5">Coordinación confidencial y directa vía WhatsApp</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3 self-end sm:self-center">
-                                <span class="btn-perla px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest flex items-center gap-2 group-hover:bg-white group-hover:text-mauve transition-all">
+                                <span class="btn-mauve px-6 py-3 min-h-[44px] rounded-full text-xs font-semibold uppercase tracking-widest flex items-center gap-2 shadow-sm">
                                     <i class="fa-brands fa-whatsapp text-sm"></i>
                                     Contactar Ahora
                                 </span>
@@ -1593,19 +1595,62 @@
                                 </div>
                             </div>
 
-                            <!-- Información Estética y Ficha -->
+                            <!-- Información Estética y Ficha Editorial -->
                             <div class="lg:col-span-7 p-6 sm:p-10 md:p-12 flex flex-col justify-between">
                                 <div>
                                     <span class="eyebrow">Remodelación Facial Profunda</span>
                                     <h2 class="font-serif fs-h2 text-carbon mt-1">Morpheus 8 <span class="italic text-mauve">· Radiofrecuencia Fraccionada</span></h2>
-                                    <p class="mt-4 text-sm sm:text-base text-plomo-500 font-light leading-relaxed">
-                                        <strong class="font-medium text-carbon">Radiofrecuencia realizada con puntas de oro.</strong> Plataforma estética de referencia mundial que combina microagujas recubiertas en oro con pulsos de radiofrecuencia fraccionada, logrando reafirmar la piel, mejorar los poros abiertos, atenuar manchas y tratar secuelas de acné con total precisión.
+                                    <p class="mt-3 text-sm sm:text-base text-plomo-500 font-light leading-relaxed">
+                                        <strong class="font-medium text-carbon">Radiofrecuencia realizada con puntas de oro.</strong> Plataforma estética de referencia mundial que combina microagujas recubiertas en oro con pulsos de radiofrecuencia fraccionada para reafirmar la piel y renovar su textura con total precisión.
                                     </p>
-                                    <dl class="mt-6 space-y-3.5 text-sm text-plomo-500 font-light leading-relaxed">
-                                        <div><dt class="eyebrow mb-0.5">Zonas de aplicación</dt><dd>Rostro completo, Zona T, zona de secuelas de acné y manos.</dd></div>
-                                        <div><dt class="eyebrow mb-0.5">Frecuencia y duración</dt><dd>Sesiones de frecuencia mensual (45 min a 1 hora por sesión).</dd></div>
-                                        <div><dt class="eyebrow mb-0.5">Objetivos principales</dt><dd>Flacidez, poros abiertos, manchas y secuelas de acné.</dd></div>
-                                    </dl>
+
+                                    <!-- Bloques Editoriales Organizados -->
+                                    <div class="mt-6 space-y-3.5">
+                                        <!-- Bloque 1: Acción en 3 niveles -->
+                                        <div class="bg-plomo-50/90 border border-plomo-200/80 rounded-2xl p-4 sm:p-5">
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <i class="fa-solid fa-layer-group text-mauve text-xs"></i>
+                                                <span class="eyebrow">Acción en 3 pasos estéticos</span>
+                                            </div>
+                                            <ol class="space-y-2.5 text-xs sm:text-sm text-plomo-500 font-light">
+                                                <li class="flex items-start gap-3">
+                                                    <span class="w-6 h-6 rounded-full bg-mauve text-white text-[11px] font-semibold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">1</span>
+                                                    <span><strong class="font-semibold text-carbon">Microagujas con puntas de oro:</strong> Penetración controlada y uniforme para estimular la matriz de colágeno.</span>
+                                                </li>
+                                                <li class="flex items-start gap-3">
+                                                    <span class="w-6 h-6 rounded-full bg-mauve text-white text-[11px] font-semibold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">2</span>
+                                                    <span><strong class="font-semibold text-carbon">Radiofrecuencia fraccionada:</strong> Energía térmica precisa que tensa el tejido y redefine el contorno.</span>
+                                                </li>
+                                                <li class="flex items-start gap-3">
+                                                    <span class="w-6 h-6 rounded-full bg-mauve text-white text-[11px] font-semibold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">3</span>
+                                                    <span><strong class="font-semibold text-carbon">Renovación e iluminación:</strong> Mejora visible en flacidez, poros abiertos, manchas y secuelas de acné.</span>
+                                                </li>
+                                            </ol>
+                                        </div>
+
+                                        <!-- Bloque 2 y 3 en Grid de 2 columnas -->
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                            <div class="bg-white border border-plomo-200/80 rounded-2xl p-4 shadow-2xs">
+                                                <div class="flex items-center gap-2 mb-1.5">
+                                                    <i class="fa-solid fa-bullseye text-mauve text-xs"></i>
+                                                    <span class="eyebrow">Zonas y Frecuencia</span>
+                                                </div>
+                                                <p class="text-xs sm:text-sm text-plomo-500 font-light leading-relaxed">
+                                                    <strong class="font-medium text-carbon">Zonas:</strong> Rostro completo, Zona T, zona de secuelas de acné y manos.<br>
+                                                    <strong class="font-medium text-carbon">Frecuencia:</strong> Mensual (45 min a 1 hora).
+                                                </p>
+                                            </div>
+                                            <div class="bg-white border border-plomo-200/80 rounded-2xl p-4 shadow-2xs">
+                                                <div class="flex items-center gap-2 mb-1.5">
+                                                    <i class="fa-solid fa-shield-halved text-mauve text-xs"></i>
+                                                    <span class="eyebrow">Objetivos del Tratamiento</span>
+                                                </div>
+                                                <p class="text-xs sm:text-sm text-plomo-500 font-light leading-relaxed">
+                                                    Trata <strong class="font-medium text-carbon">flacidez</strong>, <strong class="font-medium text-carbon">poros abiertos</strong>, <strong class="font-medium text-carbon">manchas</strong> y <strong class="font-medium text-carbon">secuelas de acné</strong> con puntas individuales estériles.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="pt-6 mt-6 border-t border-plomo-200/60 flex flex-wrap items-center justify-between gap-4">
                                     <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar una evaluación para el tratamiento con Morpheus 8" class="btn-mauve rounded-full min-h-[48px] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] inline-flex items-center justify-center gap-2">
@@ -1690,13 +1735,12 @@
                                 
                                 <!-- Composición de 2 imágenes: La Máquina Oficial y la Aplicación en Cabina -->
                                 <div class="grid grid-cols-2 gap-3 sm:gap-4 my-auto py-2">
-                                    <div class="bg-gradient-to-b from-white via-perla/50 to-mauve-50/40 rounded-2xl border border-plomo-200/80 p-3 sm:p-4 flex flex-col items-center justify-between group overflow-hidden shadow-2xs relative">
-                                        <span class="text-[10px] tracking-wider uppercase text-mauve-deep font-semibold bg-white/90 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-plomo-200/80 shadow-2xs z-10">Consola Syndeo®</span>
-                                        <div class="my-auto py-3 flex items-center justify-center relative w-full">
-                                            <div class="absolute bottom-1 w-24 h-5 bg-mauve/20 rounded-full blur-md -z-0 pointer-events-none"></div>
-                                            <img src="assets/img/hydrafacial-equipo.webp" alt="Consola Estética Hydrafacial Syndeo Original" class="max-h-44 sm:max-h-52 w-auto object-contain transition-all duration-500 ease-spring group-hover:scale-105 group-hover:-translate-y-1 drop-shadow-[0_10px_16px_rgba(0,0,0,0.08)] relative z-10" loading="lazy" decoding="async">
+                                    <div class="bg-white rounded-2xl border border-plomo-200/80 p-4 sm:p-5 flex flex-col items-center justify-between group overflow-hidden shadow-2xs relative">
+                                        <span class="text-[10px] tracking-wider uppercase text-mauve-deep font-semibold bg-perla px-2.5 py-0.5 rounded-full border border-plomo-200/80 shadow-2xs z-10">Equipo Original</span>
+                                        <div class="my-auto py-3 px-2 flex items-center justify-center relative w-full h-48 sm:h-56">
+                                            <img src="assets/img/hydrafacial-equipo.webp" alt="Máquina Oficial Hydrafacial Original Byamond" class="w-full h-full object-contain transition-all duration-500 ease-spring group-hover:scale-105 relative z-10" style="filter: none;" loading="lazy" decoding="async">
                                         </div>
-                                        <p class="text-[11px] text-plomo-500 text-center font-light z-10">Estación Digital Syndeo®</p>
+                                        <p class="text-[11px] text-plomo-500 text-center font-light z-10">Torre Oficial Hydrafacial®</p>
                                     </div>
                                     <div class="bg-white rounded-2xl border border-plomo-200/80 overflow-hidden relative group shadow-2xs flex flex-col">
                                         <div class="relative w-full h-full min-h-[180px] sm:min-h-[210px]">
@@ -1714,19 +1758,61 @@
                                 </div>
                             </div>
 
-                            <!-- Información Estética y Ficha -->
+                            <!-- Información Estética y Ficha Editorial -->
                             <div class="lg:col-span-7 p-6 sm:p-10 md:p-12 flex flex-col justify-between">
                                 <div>
                                     <span class="eyebrow">Tecnología Estética Patentada</span>
-                                    <h2 class="font-serif fs-h2 text-carbon mt-1">Hydrafacial <span class="italic text-mauve">· Plataforma Original Syndeo®</span></h2>
-                                    <p class="mt-4 text-sm sm:text-base text-plomo-500 font-light leading-relaxed">
-                                        En BYAMOND trabajamos exclusivamente con la plataforma original certificada Hydrafacial Syndeo®, no con réplicas ni equipos genéricos. Su tecnología patentada Vortex-Fusion® actúa como un vórtice continuo que remueve impurezas y células desvitalizadas a la vez que introduce nutrientes concentrados en las capas más receptivas de la piel.
+                                    <h2 class="font-serif fs-h2 text-carbon mt-1">Hydrafacial <span class="italic text-mauve">· Plataforma Original</span></h2>
+                                    <p class="mt-3 text-sm sm:text-base text-plomo-500 font-light leading-relaxed">
+                                        En BYAMOND trabajamos exclusivamente con nuestra plataforma original certificada Hydrafacial®, sin réplicas ni equipos genéricos. Su tecnología patentada Vortex-Fusion® remueve impurezas mientras infunde activos hidratantes concentrados en la piel.
                                     </p>
-                                    <dl class="mt-6 space-y-3.5 text-sm text-plomo-500 font-light leading-relaxed">
-                                        <div><dt class="eyebrow mb-0.5">Protocolo en 3 pasos estéticos</dt><dd>1) Limpieza y renovación suave con activos GlySal. 2) Extracción automatizada por vacío de impurezas. 3) Infusión e hidratación profunda con antioxidantes, péptidos y ácido hialurónico.</dd></div>
-                                        <div><dt class="eyebrow mb-0.5">Objetivos del tratamiento</dt><dd>Limpieza e hidratación profunda en rostro completo (frecuencia mensual), además de versión Hydrafacial Booster para manchas y flacidez.</dd></div>
-                                        <div><dt class="eyebrow mb-0.5">Bioseguridad y autenticidad</dt><dd>Puntas HydroPeel® individuales 100% estériles y desechables, asegurando máxima higiene y efectividad en cada sesión.</dd></div>
-                                    </dl>
+
+                                    <!-- Bloques Editoriales Organizados (Protocolo en 3 pasos verticales + Objetivos + Bioseguridad) -->
+                                    <div class="mt-6 space-y-3.5">
+                                        <!-- Bloque 1: Protocolo en 3 pasos estéticos (1, 2, 3 uno debajo del otro) -->
+                                        <div class="bg-plomo-50/90 border border-plomo-200/80 rounded-2xl p-4 sm:p-5">
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <i class="fa-solid fa-list-check text-mauve text-xs"></i>
+                                                <span class="eyebrow">Protocolo en 3 pasos estéticos</span>
+                                            </div>
+                                            <ol class="space-y-2.5 text-xs sm:text-sm text-plomo-500 font-light">
+                                                <li class="flex items-start gap-3">
+                                                    <span class="w-6 h-6 rounded-full bg-mauve text-white text-[11px] font-semibold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">1</span>
+                                                    <span><strong class="font-semibold text-carbon">Limpieza y renovación suave:</strong> Con activos GlySal.</span>
+                                                </li>
+                                                <li class="flex items-start gap-3">
+                                                    <span class="w-6 h-6 rounded-full bg-mauve text-white text-[11px] font-semibold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">2</span>
+                                                    <span><strong class="font-semibold text-carbon">Extracción automatizada:</strong> Por vacío de impurezas sin dolor.</span>
+                                                </li>
+                                                <li class="flex items-start gap-3">
+                                                    <span class="w-6 h-6 rounded-full bg-mauve text-white text-[11px] font-semibold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">3</span>
+                                                    <span><strong class="font-semibold text-carbon">Infusión e hidratación profunda:</strong> Con antioxidantes, péptidos y ácido hialurónico.</span>
+                                                </li>
+                                            </ol>
+                                        </div>
+
+                                        <!-- Bloque 2 y 3: Objetivos del Tratamiento y Bioseguridad y Autenticidad -->
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                            <div class="bg-white border border-plomo-200/80 rounded-2xl p-4 shadow-2xs">
+                                                <div class="flex items-center gap-2 mb-1.5">
+                                                    <i class="fa-solid fa-sparkles text-mauve text-xs"></i>
+                                                    <span class="eyebrow">Objetivos del tratamiento</span>
+                                                </div>
+                                                <p class="text-xs sm:text-sm text-plomo-500 font-light leading-relaxed">
+                                                    <strong class="font-medium text-carbon">Limpieza e hidratación profunda</strong> en rostro completo (frecuencia mensual), además de protocolo <strong class="font-medium text-carbon">Hydrafacial Booster</strong> para manchas y flacidez.
+                                                </p>
+                                            </div>
+                                            <div class="bg-white border border-plomo-200/80 rounded-2xl p-4 shadow-2xs">
+                                                <div class="flex items-center gap-2 mb-1.5">
+                                                    <i class="fa-solid fa-shield-heart text-mauve text-xs"></i>
+                                                    <span class="eyebrow">Bioseguridad y autenticidad</span>
+                                                </div>
+                                                <p class="text-xs sm:text-sm text-plomo-500 font-light leading-relaxed">
+                                                    Puntas <strong class="font-medium text-carbon">HydroPeel®</strong> individuales 100% estériles y desechables, asegurando máxima higiene y efectividad en cada sesión.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="pt-6 mt-6 border-t border-plomo-200/60 flex flex-wrap items-center justify-between gap-4">
                                     <a href="#contacto" data-wa="Hola BYAMOND, deseo agendar mi sesión de Hydrafacial original" class="btn-mauve rounded-full min-h-[48px] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] inline-flex items-center justify-center gap-2">
